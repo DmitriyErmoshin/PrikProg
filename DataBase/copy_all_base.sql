@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Ноя 13 2016 г., 20:24
+-- Время создания: Ноя 19 2016 г., 13:10
 -- Версия сервера: 5.5.25
 -- Версия PHP: 5.3.13
 
@@ -23,6 +23,30 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `blocks`
+--
+
+CREATE TABLE IF NOT EXISTS `blocks` (
+  `id` int(10) NOT NULL,
+  `id_tracks` int(10) NOT NULL,
+  `length` time NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `blocks`
+--
+
+INSERT INTO `blocks` (`id`, `id_tracks`, `length`) VALUES
+(1, 1, '00:06:33'),
+(1, 3, '00:06:33'),
+(1, 5, '00:06:33'),
+(2, 1, '00:03:01'),
+(2, 2, '00:03:01'),
+(3, 5, '00:02:34');
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `events`
 --
 
@@ -36,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `events` (
   UNIQUE KEY `id` (`id`),
   KEY `id_2` (`id`),
   KEY `event_type_id` (`event_type_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=20 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ;
 
 --
 -- Дамп данных таблицы `events`
@@ -57,10 +81,9 @@ INSERT INTO `events` (`id`, `event_type_id`, `dscr`, `user_id`, `time`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `events_type` (
-  `id` int(2) NOT NULL,
+  `id` int(2) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `id_2` (`id`),
   KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Типы событий';
 
@@ -92,7 +115,7 @@ CREATE TABLE IF NOT EXISTS `marks` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_2` (`id`),
   KEY `id` (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ;
 
 --
 -- Дамп данных таблицы `marks`
@@ -117,7 +140,7 @@ INSERT INTO `marks` (`id`, `date`, `number`, `radiost_id`, `user_id`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `sales` (
-  `id` int(2) NOT NULL,
+  `id` int(2) NOT NULL AUTO_INCREMENT,
   `mark_avg` int(2) NOT NULL,
   `sale` int(2) NOT NULL,
   `dscr` varchar(100) NOT NULL,
@@ -138,6 +161,77 @@ INSERT INTO `sales` (`id`, `mark_avg`, `sale`, `dscr`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `schedule`
+--
+
+CREATE TABLE IF NOT EXISTS `schedule` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `id_schedule_type` int(2) NOT NULL,
+  `radiost_id` int(2) NOT NULL,
+  `fromdate` datetime NOT NULL,
+  `todate` datetime NOT NULL,
+  `id_song` int(10) NOT NULL,
+	PRIMARY KEY (`id`),
+	KEY `id` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `schedule`
+--
+
+INSERT INTO `schedule` (`id`, `id_schedule_type`, `radiost_id`, `fromdate`, `todate`, `id_song`) VALUES
+(1, 1, 1, '2016-11-19 14:43:11', '2016-11-19 14:49:44', 1),
+(2, 2, 1, '2016-11-19 14:43:50', '2016-11-19 14:46:24', 3);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `schedule_type`
+--
+
+CREATE TABLE IF NOT EXISTS `schedule_type` (
+  `id` int(2) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+	PRIMARY KEY (`id`),
+	KEY `id` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `schedule_type`
+--
+
+INSERT INTO `schedule_type` (`id`, `name`) VALUES
+(1, 'Блок'),
+(2, 'Трек');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `tracks`
+--
+
+CREATE TABLE IF NOT EXISTS `tracks` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `length` time NOT NULL,
+	PRIMARY KEY (`id`),
+	KEY `id` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `tracks`
+--
+
+INSERT INTO `tracks` (`id`, `name`, `length`) VALUES
+(1, 'RnB-Пушкин', '00:01:42'),
+(2, 'Тату-Я искала тебя', '00:01:15'),
+(3, 'Маша-Пастух', '00:03:03'),
+(4, 'Кристина-Солнце', '00:03:25'),
+(5, 'Linkin Park-Numb', '00:02:34');
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `trndtl`
 --
 
@@ -153,7 +247,7 @@ CREATE TABLE IF NOT EXISTS `trndtl` (
   KEY `id` (`id`),
   KEY `users_id` (`user_id`,`time`,`incomfl`),
   KEY `id_3` (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ;
 
 --
 -- Дамп данных таблицы `trndtl`
@@ -184,7 +278,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `longname` varchar(200) NOT NULL,
   `role_id` int(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ;
 
 --
 -- Дамп данных таблицы `users`
