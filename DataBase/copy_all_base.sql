@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Ноя 19 2016 г., 13:10
+-- Время создания: Ноя 29 2016 г., 20:11
 -- Версия сервера: 5.5.25
 -- Версия PHP: 5.3.13
 
@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `events` (
   UNIQUE KEY `id` (`id`),
   KEY `id_2` (`id`),
   KEY `event_type_id` (`event_type_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- Дамп данных таблицы `events`
@@ -85,7 +85,7 @@ CREATE TABLE IF NOT EXISTS `events_type` (
   `name` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Типы событий';
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='���� �������' AUTO_INCREMENT=8 ;
 
 --
 -- Дамп данных таблицы `events_type`
@@ -115,23 +115,95 @@ CREATE TABLE IF NOT EXISTS `marks` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_2` (`id`),
   KEY `id` (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 --
 -- Дамп данных таблицы `marks`
 --
 
 INSERT INTO `marks` (`id`, `date`, `number`, `radiost_id`, `user_id`) VALUES
-(1, '2016-11-11 19:00:00', 4, 1, 1),
-(2, '2016-11-12 19:00:00', 5, 2, 1),
-(3, '2016-11-15 19:00:00', 9, 3, 1),
-(4, '2016-11-16 19:00:00', 6, 1, 8),
-(5, '2016-11-11 19:00:00', 5, 2, 6),
-(6, '2016-11-14 19:00:00', 4, 3, 3),
-(7, '2016-11-13 19:00:00', 8, 3, 6),
-(8, '2016-11-14 19:00:00', 3, 1, 7),
-(9, '2016-11-11 19:00:00', 4, 3, 9),
-(10, '2016-11-14 19:00:00', 7, 2, 7);
+(1, '2016-11-11 14:00:00', 4, 1, 1),
+(2, '2016-11-12 14:00:00', 5, 2, 1),
+(3, '2016-11-15 14:00:00', 9, 3, 1),
+(4, '2016-11-16 14:00:00', 6, 1, 8),
+(5, '2016-11-11 14:00:00', 5, 2, 6),
+(6, '2016-11-14 14:00:00', 4, 3, 3),
+(7, '2016-11-13 14:00:00', 8, 3, 6),
+(8, '2016-11-14 14:00:00', 3, 1, 7),
+(9, '2016-11-11 14:00:00', 4, 3, 9),
+(10, '2016-11-14 14:00:00', 7, 2, 7);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `radiost`
+--
+
+CREATE TABLE IF NOT EXISTS `radiost` (
+  `id` int(10) NOT NULL,
+  `longname` varchar(100) NOT NULL,
+  `radiost_type` int(2) NOT NULL,
+  `available_song` int(10) NOT NULL,
+  `available_months` int(10) NOT NULL,
+  `fromdate` date DEFAULT NULL,
+  `user_id` int(10) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `radiost`
+--
+
+INSERT INTO `radiost` (`id`, `longname`, `radiost_type`, `available_song`, `available_months`, `fromdate`, `user_id`) VALUES
+(1, 'Р Р°РґРёРѕ "РЁР°РЅСЃРѕРЅ"', 1, 0, 0, NULL, 1),
+(2, 'Р Р°РґРёРѕ RECORD', 2, 120, 0, NULL, 7);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `radiost_type`
+--
+
+CREATE TABLE IF NOT EXISTS `radiost_type` (
+  `id` int(10) NOT NULL,
+  `longname` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `radiost_type`
+--
+
+INSERT INTO `radiost_type` (`id`, `longname`) VALUES
+(1, 'Полный доступ'),
+(2, 'Ограничение по песням'),
+(3, 'Ограничение по времени');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `roles`
+--
+
+CREATE TABLE IF NOT EXISTS `roles` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `longname` varchar(100) NOT NULL,
+  `code` varchar(10) NOT NULL,
+  `create_users` int(1) NOT NULL DEFAULT '0',
+  `rewrite_users` int(1) NOT NULL DEFAULT '0',
+  `del_users` int(1) NOT NULL DEFAULT '0',
+  `create_schedule` int(1) NOT NULL DEFAULT '0',
+  `rewrite_schedule` int(1) NOT NULL DEFAULT '0',
+  `del_schedule` int(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Дамп данных таблицы `roles`
+--
+
+INSERT INTO `roles` (`id`, `longname`, `code`, `create_users`, `rewrite_users`, `del_users`, `create_schedule`, `rewrite_schedule`, `del_schedule`) VALUES
+(1, 'Администратор', 'admin', 1, 1, 1, 1, 1, 1),
+(2, 'Покупатель', 'customer', 0, 0, 0, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -146,7 +218,7 @@ CREATE TABLE IF NOT EXISTS `sales` (
   `dscr` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
 -- Дамп данных таблицы `sales`
@@ -171,9 +243,9 @@ CREATE TABLE IF NOT EXISTS `schedule` (
   `fromdate` datetime NOT NULL,
   `todate` datetime NOT NULL,
   `id_song` int(10) NOT NULL,
-	PRIMARY KEY (`id`),
-	KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`),
+  KEY `id` (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Дамп данных таблицы `schedule`
@@ -192,9 +264,9 @@ INSERT INTO `schedule` (`id`, `id_schedule_type`, `radiost_id`, `fromdate`, `tod
 CREATE TABLE IF NOT EXISTS `schedule_type` (
   `id` int(2) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
-	PRIMARY KEY (`id`),
-	KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`),
+  KEY `id` (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Дамп данных таблицы `schedule_type`
@@ -214,9 +286,9 @@ CREATE TABLE IF NOT EXISTS `tracks` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `length` time NOT NULL,
-	PRIMARY KEY (`id`),
-	KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`),
+  KEY `id` (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Дамп данных таблицы `tracks`
@@ -247,23 +319,47 @@ CREATE TABLE IF NOT EXISTS `trndtl` (
   KEY `id` (`id`),
   KEY `users_id` (`user_id`,`time`,`incomfl`),
   KEY `id_3` (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 --
 -- Дамп данных таблицы `trndtl`
 --
 
 INSERT INTO `trndtl` (`id`, `amount`, `user_id`, `time`, `incomfl`, `dscr`) VALUES
-(1, 100, 1, '2016-11-11 21:09:22', 1, 'Внесение наличных через банкомат(BANKOMAT URFU авторизованная транзакция)'),
-(2, 50, 1, '2016-11-13 00:44:18', 0, 'Оплата радио'),
-(3, 150, 3, '2016-11-14 23:30:23', 1, 'Внесение наличных с карты(Visa **** **** **** 7841)'),
-(4, 250, 3, '2016-11-17 05:38:46', 1, 'Внесение наличных через банкомат(BANKOMAT SBERBANK операция завершилась успешно)'),
-(5, 260, 6, '2016-11-23 07:42:49', 1, 'Внесение наличных с карты(MasterCard **** **** **** 4317)'),
-(6, 100, 6, '2016-11-19 09:35:47', 0, 'Оплата радио'),
-(7, 600, 8, '2016-11-15 08:13:50', 1, 'Пополнение наличных с терминала(TERMINAL MAGNIT U DOMA)'),
-(8, 300, 7, '2016-11-15 07:22:46', 1, 'Внесение наличных с карты(Visa **** **** **** 4731)'),
-(9, 250, 9, '2016-11-16 08:18:44', 1, 'Пополнение наличных с терминала(TERMINAL QIWI PAYS)'),
-(10, 250, 8, '2016-11-19 14:53:43', 0, 'Оплата радио');
+(1, 100, 1, '2016-11-11 16:09:22', 1, 'Внесение наличных через банкомат(BANKOMAT URFU авторизованная транзакция)'),
+(2, 50, 1, '2016-11-12 19:44:18', 0, 'Оплата радио'),
+(3, 150, 3, '2016-11-14 18:30:23', 1, 'Внесение наличных с карты(Visa **** **** **** 7841)'),
+(4, 250, 3, '2016-11-17 00:38:46', 1, 'Внесение наличных через банкомат(BANKOMAT SBERBANK операция завершилась успешно)'),
+(5, 260, 6, '2016-11-23 02:42:49', 1, 'Внесение наличных с карты(MasterCard **** **** **** 4317)'),
+(6, 100, 6, '2016-11-19 04:35:47', 0, 'Оплата радио'),
+(7, 600, 8, '2016-11-15 03:13:50', 1, 'Пополнение наличных с терминала(TERMINAL MAGNIT U DOMA)'),
+(8, 300, 7, '2016-11-15 02:22:46', 1, 'Внесение наличных с карты(Visa **** **** **** 4731)'),
+(9, 250, 9, '2016-11-16 03:18:44', 1, 'Пополнение наличных с терминала(TERMINAL QIWI PAYS)'),
+(10, 250, 8, '2016-11-19 09:53:43', 0, 'Оплата радио');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `trndtl_attr`
+--
+
+CREATE TABLE IF NOT EXISTS `trndtl_attr` (
+  `id` int(10) NOT NULL,
+  `code` varchar(10) NOT NULL,
+  `value` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `trndtl_attr`
+--
+
+INSERT INTO `trndtl_attr` (`id`, `code`, `value`) VALUES
+(2, 'reason', 'payment'),
+(2, 'radio', '1'),
+(6, 'reason', 'payment'),
+(6, 'radio', '2'),
+(10, 'reason', 'payment'),
+(10, 'radio', '1');
 
 -- --------------------------------------------------------
 
@@ -278,7 +374,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `longname` varchar(200) NOT NULL,
   `role_id` int(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 --
 -- Дамп данных таблицы `users`
