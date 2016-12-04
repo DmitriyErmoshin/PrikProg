@@ -3,4 +3,4 @@ CREATE TABLE IF NOT EXISTS `events_type` (
   `name` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Типы событий';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
