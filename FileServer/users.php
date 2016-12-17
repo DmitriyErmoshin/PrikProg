@@ -15,7 +15,6 @@ $login = $_POST['login'];
 $password = $_POST['password'];
 $longname = $_POST['longname'];
 $role_id = $_POST['role_id'];
-//$time = $_POST['time'];
 $user_id = $_POST['user_id'];
 
 $dbh = mysql_connect($mshost, $msuser, $mspass) or die("Не могу соединиться с MySQL.");
@@ -31,7 +30,8 @@ if ($create == '1'){
 	}
 	
 if ($select == '1'){
-	$query="select id, login, password, longname, role_id from `users`";
+	if (is_numeric($role_id)){$role_id = '= '.$role_id;} else {$role_id = 'is not null';}
+ 	$query="select id, login, password, longname, role_id from `users` where role_id $role_id";
 	$res = mysql_query($query);
 	while($row = mysql_fetch_array($res)){
 		echo "Идентификатор: ".$row['id']."<br>\n";
