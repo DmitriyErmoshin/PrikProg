@@ -18,5 +18,13 @@ namespace RadioOwner
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
         }
+        public static string FindInfo(string input)
+        {
+            int b = input.IndexOf(':') + 2;
+            input = input.Remove(0, b);
+            int e = input.IndexOf('<');
+            input = input.Remove(e);
+            return input;
+        }
     }
 }

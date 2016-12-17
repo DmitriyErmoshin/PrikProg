@@ -108,6 +108,7 @@
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(179, 264);
             this.listBox1.TabIndex = 6;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -179,6 +180,7 @@
             this.button6.TabIndex = 14;
             this.button6.Text = "Выйти";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // label8
             // 
@@ -192,7 +194,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(299, 431);
+            this.label9.Location = new System.Drawing.Point(247, 381);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(169, 13);
             this.label9.TabIndex = 16;
@@ -222,6 +224,7 @@
             this.Controls.Add(this.button1);
             this.Name = "Form2";
             this.Text = "Здравствуйте, ";
+            this.Load += new System.EventHandler(this.Form2_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
