@@ -21,7 +21,7 @@ if ($select == '1'){
 		echo "Имя события: ".$row['name']."<br>\n";
 		echo "Идентификатор пользователя: ".$row['user_id']."<br>\n";
 		echo "Время: ".$row['time']."<br>\n";
-		echo "Описание: ".$row['dscr']."<br><hr>\n";
+		echo "Описание: ".$row['dscr']."<br>\n<hr>\n";
 		}
 	}
 
