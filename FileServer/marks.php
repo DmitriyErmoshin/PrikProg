@@ -38,6 +38,7 @@ if ($select == '1'){
 		echo "Идентификатор пользователя: ".$row['user_id']."<br>\n<hr>\n";
 		}
 	}
+
 if ($select == '2'){
 	$query="select id, date, number, radiost_id, user_id from `marks` where user_id = $user_id";
 	$res = mysql_query($query);
