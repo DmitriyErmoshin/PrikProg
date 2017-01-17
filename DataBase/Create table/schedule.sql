@@ -5,6 +5,6 @@ CREATE TABLE IF NOT EXISTS `schedule` (
   `fromdate` datetime NOT NULL,
   `todate` datetime NOT NULL,
   `id_song` int(10) NOT NULL,
-	PRIMARY KEY (`id`),
-	KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`),
+  KEY `id` (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;

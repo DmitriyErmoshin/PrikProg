@@ -9,4 +9,4 @@ CREATE TABLE IF NOT EXISTS `roles` (
   `rewrite_schedule` int(1) NOT NULL DEFAULT '0',
   `del_schedule` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;

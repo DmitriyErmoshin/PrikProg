@@ -1,0 +1,1 @@
+Рядом с "RadioOwner.exe" должен лежать "QueryServer.dll".

@@ -5,4 +5,4 @@ CREATE TABLE IF NOT EXISTS `sales` (
   `dscr` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;

@@ -8,4 +8,4 @@ CREATE TABLE IF NOT EXISTS `events` (
   UNIQUE KEY `id` (`id`),
   KEY `id_2` (`id`),
   KEY `event_type_id` (`event_type_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
