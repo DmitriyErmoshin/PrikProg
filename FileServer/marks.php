@@ -35,7 +35,7 @@ if ($select == '1'){
 		echo "Время: ".$row['date']."<br>\n";
 		echo "Оценка: ".$row['number']."<br>\n";
 		echo "Идентификатор радиостанции: ".$row['radiost_id']."<br>\n";
-		echo "Идентификатор пользователя: ".$row['user_id']."<br><hr>\n";
+		echo "Идентификатор пользователя: ".$row['user_id']."<br>\n<hr>\n";
 		}
 	}
 
