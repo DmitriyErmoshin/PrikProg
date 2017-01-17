@@ -28,14 +28,25 @@ if ($create == '1'){
 	}
 	
 if ($select == '1'){
-	$query="select id, date, number, radiost_id, user_id from `marks`";
+	$query="select id, date, number, radiost_id, user_id from `marks` where radiost_id = $radiost_id";
 	$res = mysql_query($query);
 	while($row = mysql_fetch_array($res)){
 		echo "Идентификатор: ".$row['id']."<br>\n";
 		echo "Время: ".$row['date']."<br>\n";
 		echo "Оценка: ".$row['number']."<br>\n";
 		echo "Идентификатор радиостанции: ".$row['radiost_id']."<br>\n";
-		echo "Идентификатор пользователя: ".$row['user_id']."<br><hr>\n";
+		echo "Идентификатор пользователя: ".$row['user_id']."<br>\n<hr>\n";
+		}
+	}
+if ($select == '2'){
+	$query="select id, date, number, radiost_id, user_id from `marks` where user_id = $user_id";
+	$res = mysql_query($query);
+	while($row = mysql_fetch_array($res)){
+		echo "Идентификатор: ".$row['id']."<br>\n";
+		echo "Время: ".$row['date']."<br>\n";
+		echo "Оценка: ".$row['number']."<br>\n";
+		echo "Идентификатор радиостанции: ".$row['radiost_id']."<br>\n";
+		echo "Идентификатор пользователя: ".$row['user_id']."<br>\n<hr>\n";
 		}
 	}
 

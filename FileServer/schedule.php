@@ -63,7 +63,7 @@ if ($select == '1'){
 		echo "Ее конец: ".$row['todate']."<br>\n";
 		echo "Инициалы: ".$row['id_song']."<br>\n";
 		echo "Идентификатор песни: ".$row['song_name']."<br>\n";
-		echo "Длина песни: ".$row['length']."<br><hr>\n";
+		echo "Длина песни: ".$row['length']."<br>\n<hr>\n";
 		}
 	}
 

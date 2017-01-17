@@ -37,7 +37,7 @@ if ($select == '1'){
 		echo "Идентификатор пользователя: ".$row['user_id']."<br>\n";
 		echo "Время: ".$row['time']."<br>\n";
 		echo "Признак входящей проводки: ".$row['incomfl']."<br>\n";
-		echo "Описание: ".$row['dscr']."<br><hr>\n";
+		echo "Описание: ".$row['dscr']."<br>\n<hr>\n";
 		}
 	}
 

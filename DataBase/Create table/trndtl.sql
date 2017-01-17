@@ -10,4 +10,4 @@ CREATE TABLE IF NOT EXISTS `trndtl` (
   KEY `id` (`id`),
   KEY `users_id` (`user_id`,`time`,`incomfl`),
   KEY `id_3` (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
